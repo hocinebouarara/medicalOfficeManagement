@@ -15,4 +15,6 @@ public class Links {
     
     public static String DASHBOARD = "/dashboard/FXML.fxml";
 
+    public static String PROFILEIMAGE = "/images/myImage.jpg";
+
 }
