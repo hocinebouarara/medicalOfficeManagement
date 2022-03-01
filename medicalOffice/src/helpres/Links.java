@@ -10,6 +10,9 @@ package helpres;
  * @author hocin
  */
 public class Links {
+
+    public static String LOGINVIEW = "/login/loginView.fxml";
     
-        public static String LOGINVIEW = "/login/loginView.fxml";
+    public static String DASHBOARD = "/dashboard/FXML.fxml";
+
 }
