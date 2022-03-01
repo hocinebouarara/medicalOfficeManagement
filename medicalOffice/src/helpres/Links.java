@@ -11,4 +11,5 @@ package helpres;
  */
 public class Links {
     
+        public static String LOGINVIEW = "/login/loginView.fxml";
 }
