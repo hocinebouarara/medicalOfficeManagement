@@ -6,6 +6,7 @@
 package dashboard;
 
 import com.jfoenix.controls.JFXDrawer;
+import helpres.Links;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
@@ -14,11 +15,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
@@ -45,6 +49,8 @@ public class DashboardController implements Initializable {
     private Button removeNotificationsBtn;
     @FXML
     private AnchorPane slideAnchor;
+    @FXML
+    private Circle circle;
 
     /**
      * Initializes the controller class.
@@ -52,6 +58,8 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Image image = new Image(Links.PROFILEIMAGE);
+        circle.setFill(new ImagePattern(image));
         slideTransition(slideAnchor, 400, 0.1);
         menuBtn.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
