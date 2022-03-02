@@ -31,4 +31,42 @@
     -fx-scale-x: 1.1; 
     -fx-scale-y: 1.1;
 }
+.scroll-pane {
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-padding: 0;
+}
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-radius:0px;
 
+}
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 2em;
+}
+.scroll-pane .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0em;
+    -fx-padding: 0 0 10 0 ;
+}
+.scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0em;
+    -fx-padding: 0 18 0 0 ;
+}
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-padding: -2;
+}
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #31394F;
+    -fx-background-insets: 2,0,0;
+    -fx-cursor: hand;
+}
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: #45547d;
+
+}
