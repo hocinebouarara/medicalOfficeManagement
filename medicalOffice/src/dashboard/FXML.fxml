@@ -2,7 +2,9 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,10 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@dashboardStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+<AnchorPane maxWidth="1000.0" prefHeight="650.0" prefWidth="1200.0" stylesheets="@dashboardStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
    <children>
-      <BorderPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="794.0" styleClass="anchor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="anchor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox alignment="CENTER_LEFT" maxHeight="46.0" prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -61,7 +62,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="46.0" styleClass="btn" textFill="#e0e0e0">
+                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#remove" prefHeight="46.0" styleClass="btn" textFill="#e0e0e0">
                            <font>
                               <Font name="Century Gothic Italic" size="15.0" />
                            </font>
@@ -91,14 +92,14 @@
             </HBox>
          </top>
          <right>
-            <AnchorPane fx:id="slideAnchor" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="slideAnchor" prefHeight="600.0" prefWidth="420.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="-46.0" />
                </BorderPane.margin>
                <children>
-                  <VBox fx:id="notificationsSlide" layoutX="10.0" layoutY="10.0" prefHeight="431.0" prefWidth="400.0" style="-fx-background-color: #884022;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="notificationsSlide" alignment="TOP_CENTER" layoutX="5.0" style="-fx-background-color: #202940;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox prefHeight="400.0" prefWidth="12.0" VBox.vgrow="ALWAYS">
+                        <HBox alignment="CENTER" prefHeight="400.0" prefWidth="12.0">
                            <children>
                               <Button fx:id="removeNotificationsBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" style="-fx-background-color: #202940; -fx-background-radius: 50px; -fx-border-radius: 50px;" styleClass="btn">
                                  <graphic>
@@ -113,9 +114,9 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox fx:id="menuSlide" prefHeight="431.0" prefWidth="400.0" style="-fx-background-color: #792933;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="menuSlide" layoutX="-7.0" style="-fx-background-color: #792933;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox prefHeight="400.0" prefWidth="12.0" style="-fx-background-color: #202940;" VBox.vgrow="ALWAYS">
+                        <HBox prefWidth="381.0" style="-fx-background-color: #202940;" VBox.vgrow="ALWAYS">
                            <children>
                               <Button fx:id="removeMenuBtm" mnemonicParsing="false" prefHeight="40.0" prefWidth="34.0" styleClass="btn">
                                  <graphic>
@@ -126,195 +127,322 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <HBox alignment="CENTER" prefHeight="140.0" prefWidth="373.0" spacing="8.0" translateY="10.0">
-                                       <children>
-                                          <VBox alignment="BOTTOM_CENTER">
-                                             <children>
-                                                <Circle fx:id="circle" fill="#ffffff00" radius="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
-                                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" style="-fx-background-color: #E0e0e0; -fx-background-radius: 20px; -fx-border-radius: 20px;" styleClass="btn" translateX="-25.0" translateY="-25.0">
-                                                   <graphic>
-                                                      <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../images/icons8-camera-34.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                   <font>
-                                                      <Font name="Century Gothic" size="6.0" />
-                                                   </font>
-                                                </Button>
-                                             </children>
-                                          </VBox>
-                                          <VBox alignment="CENTER_LEFT" prefHeight="114.0" prefWidth="183.0">
-                                             <children>
-                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Compte du médecin">
-                                                   <font>
-                                                      <Font name="Bauhaus 93" size="18.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fill="#e0e0e0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hocine Bouarara">
-                                                   <font>
-                                                      <Font size="16.0" />
-                                                   </font>
-                                                </Text>
-                                                <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="134.0" styleClass="sign" text="Se déconnecter" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Century Gothic Bold" size="14.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                             <padding>
-                                                <Insets left="8.0" />
-                                             </padding>
-                                          </VBox>
-                                          <VBox alignment="TOP_CENTER">
-                                             <HBox.margin>
-                                                <Insets top="20.0" />
-                                             </HBox.margin>
-                                             <children>
-                                                <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" styleClass="btn">
-                                                   <graphic>
-                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../images/icons8-menu-vertical-50.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                   <font>
-                                                      <Font name="Century Gothic" size="15.0" />
-                                                   </font>
-                                                </Button>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="10.0" top="5.0" />
-                                       </padding>
-                                    </HBox>
-                                    <Line endX="325.0" stroke="#dedede54" strokeWidth="2.0" VBox.vgrow="ALWAYS">
-                                       <VBox.margin>
-                                          <Insets top="40.0" />
-                                       </VBox.margin>
-                                    </Line>
-                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="menu-btn" VBox.vgrow="ALWAYS">
-                                       <children>
-                                          <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" styleClass="btn" text="Entrez code d'activation" textFill="#e0e0e0">
-                                             <font>
-                                                <Font name="Century Gothic" size="16.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets top="20.0" />
-                                             </VBox.margin>
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../images/icons8-letter-from-enginner-48.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" styleClass="btn" text="Réglages" textFill="#e0e0e0">
-                                             <font>
-                                                <Font name="Century Gothic" size="16.0" />
-                                             </font>
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../images/icons8-letter-from-enginner-48.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="58.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" styleClass="btn" text="Mes employés" textFill="#e0e0e0">
-                                             <font>
-                                                <Font name="Century Gothic" size="16.0" />
-                                             </font>
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../images/icons8-letter-from-enginner-48.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" styleClass="btn" text="Mes statistiques" textFill="#e0e0e0">
-                                             <font>
-                                                <Font name="Century Gothic" size="16.0" />
-                                             </font>
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../images/icons8-letter-from-enginner-48.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" styleClass="btn" text="Aider" textFill="#e0e0e0">
-                                             <font>
-                                                <Font name="Century Gothic" size="16.0" />
-                                             </font>
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../images/icons8-letter-from-enginner-48.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Button>
-                                          <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="183.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" styleClass="btn" text="À propos de nous" textFill="#e0e0e0">
-                                             <font>
-                                                <Font name="Century Gothic" size="16.0" />
-                                             </font>
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../images/icons8-letter-from-enginner-48.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Button>
-                                       </children>
-                                    </VBox>
-                                    <Line endX="325.0" layoutX="27.0" layoutY="181.0" stroke="#dedede54" strokeWidth="2.0">
-                                       <VBox.margin>
-                                          <Insets top="25.0" />
-                                       </VBox.margin>
-                                    </Line>
-                                    <VBox alignment="CENTER" layoutX="10.0" layoutY="182.0" prefHeight="200.0" prefWidth="100.0" />
-                                 </children>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="650.0" prefWidth="288.0" styleClass="scrollPane" vbarPolicy="ALWAYS" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
-                                 <padding>
-                                    <Insets top="25.0" />
-                                 </padding>
-                              </VBox>
+                                 <content>
+                                    <VBox fx:id="menuScorll" alignment="TOP_CENTER" style="-fx-background-color: #202940;">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="161.0" prefWidth="350.0" spacing="4.0" translateY="10.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <VBox alignment="CENTER_RIGHT" prefHeight="137.0" prefWidth="102.0">
+                                                   <children>
+                                                      <Circle fx:id="circle" fill="#ffffff00" radius="46.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
+                                                      <Button mnemonicParsing="false" prefHeight="26.0" style="-fx-background-color: #e0e0e0cc; -fx-background-radius: 20px;" translateX="-60.0" translateY="-25.0" VBox.vgrow="ALWAYS">
+                                                         <graphic>
+                                                            <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../images/icons8-camera-34.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                         <font>
+                                                            <Font name="Century Gothic" size="8.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" prefHeight="129.0" prefWidth="183.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Compte du médecin">
+                                                         <font>
+                                                            <Font name="Bauhaus 93" size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="#e0e0e0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hocine Bouarara">
+                                                         <font>
+                                                            <Font size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="134.0" styleClass="sign" text="Se déconnecter" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="14.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets left="8.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox alignment="BASELINE_LEFT" prefHeight="137.0" prefWidth="44.0">
+                                                   <HBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="btn">
+                                                         <graphic>
+                                                            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../images/icons8-menu-vertical-50.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                         <font>
+                                                            <Font name="Century Gothic" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Line endX="307.5" stroke="#dedede54" strokeWidth="2.0" translateX="-7.0" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets top="40.0" />
+                                             </VBox.margin>
+                                          </Line>
+                                          <VBox prefHeight="242.0" prefWidth="383.0" styleClass="menu-btn">
+                                             <children>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Entrez code d'activation" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" top="15.0" />
+                                                   </VBox.margin>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Réglages" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="58.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Mes employés" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="96.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Mes statistiques" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Aider" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="183.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="À propos de nous" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                          <Line endX="307.5" layoutX="27.0" layoutY="181.0" stroke="#dedede54" strokeWidth="2.0" translateX="-7.0">
+                                             <VBox.margin>
+                                                <Insets top="25.0" />
+                                             </VBox.margin>
+                                          </Line>
+                                          <VBox layoutX="10.0" layoutY="217.0" prefHeight="242.0" prefWidth="383.0" styleClass="menu-btn" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Entrez code d'activation" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" top="15.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Réglages" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="58.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Mes employés" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="96.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Mes statistiques" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Aider" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                   <rotationAxis>
+                                                      <Point3D z="10.0" />
+                                                   </rotationAxis>
+                                                </Button>
+                                                <Button alignment="BASELINE_LEFT" graphicTextGap="6.0" layoutX="30.0" layoutY="190.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="310.0" styleClass="btn" text="Aider" textFill="#e0e0e0">
+                                                   <font>
+                                                      <Font name="Century Gothic" size="16.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/icons8-letter-from-enginner-48.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <VBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </ScrollPane>
                            </children>
                         </HBox>
                      </children>
@@ -322,6 +450,13 @@
                </children>
             </AnchorPane>
          </right>
+         <left>
+            <HBox prefHeight="600.0" prefWidth="327.0" BorderPane.alignment="TOP_LEFT">
+               <BorderPane.margin>
+                  <Insets top="-46.0" />
+               </BorderPane.margin>
+            </HBox>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
