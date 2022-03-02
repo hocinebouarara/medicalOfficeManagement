@@ -73,7 +73,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button id="close" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="46.0" styleClass="btn" stylesheets="@dashboardStyle.css" textFill="#e0e0e0">
+                        <Button id="close" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#close" prefHeight="46.0" styleClass="btn" stylesheets="@dashboardStyle.css" textFill="#e0e0e0">
                            <font>
                               <Font name="Century Gothic Italic" size="15.0" />
                            </font>

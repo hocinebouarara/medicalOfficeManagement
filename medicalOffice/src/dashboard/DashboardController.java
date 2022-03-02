@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -99,6 +100,13 @@ public class DashboardController implements Initializable {
         //tt.setCycleCount((int) 4f);
         //tt.setAutoReverse(true);
         tt.play();
+    }
+    
+    @FXML
+    private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
     }
 
 }
