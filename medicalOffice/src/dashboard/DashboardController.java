@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -52,6 +53,13 @@ public class DashboardController implements Initializable {
     private AnchorPane slideAnchor;
     @FXML
     private Circle circle;
+    @FXML
+    private VBox menuScorll;
+
+    boolean menuIsActive;
+    boolean notificationsIsActive;
+    int countMenu;
+    int countNotif;
 
     /**
      * Initializes the controller class.
@@ -61,32 +69,62 @@ public class DashboardController implements Initializable {
         // TODO
         Image image = new Image(Links.PROFILEIMAGE);
         circle.setFill(new ImagePattern(image));
-        slideTransition(slideAnchor, 400, 0.1);
+        slideTransition(slideAnchor, 420, 0.1);
+        menuIsActive = false;
+        notificationsIsActive = false;
+        countMenu = 1;
+        countNotif = 1;
         menuBtn.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                slideTransition(menuSlide, -400, 400);
+                slideTransition(menuSlide, -420, 400);
+                menuIsActive = true;
+                countMenu = 0;
 
             }
         });
         removeMenuBtm.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                slideTransition(menuSlide, 400, 400);
+                slideTransition(menuSlide, 420, 400);
+                menuIsActive = false;
+                countMenu = 1;
 
             }
         });
         notificationBtn.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                slideTransition(notificationsSlide, -400, 400);
-
+                slideTransition(notificationsSlide, -420, 400);
+                notificationsIsActive = true;
+                countNotif = 0;
             }
         });
         removeNotificationsBtn.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                slideTransition(notificationsSlide, 400, 400);
+                slideTransition(notificationsSlide, 420, 400);
+                notificationsIsActive = false;
+                countNotif = 1;
+                
+
+            }
+        });
+
+        anchor.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                countMenu++;
+                countNotif++;
+                if (notificationsIsActive = true && countNotif == 1) {
+                    slideTransition(notificationsSlide, 420, 400);
+                    notificationsIsActive = false;
+                }
+                if (menuIsActive = true && countMenu == 1) {
+                    slideTransition(menuSlide, 420, 400);
+                    menuIsActive = false;
+
+                }
 
             }
         });
@@ -101,12 +139,14 @@ public class DashboardController implements Initializable {
         //tt.setAutoReverse(true);
         tt.play();
     }
-    
+
     @FXML
     private void close(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 
     }
+
+
 
 }
